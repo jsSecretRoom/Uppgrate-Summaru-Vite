@@ -1,0 +1,203 @@
+@font-face {
+  font-family: 'Knewave-Regular';
+  src: url('../../assets/fonts/Knewave-Regular.ttf');
+}
+@font-face {
+  font-family: 'Lemon-Regular';
+  src: url('../../assets/fonts/Lemon-Regular.ttf');
+}
+
+#root {
+  width: 1600px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Knewave-Regular;
+  .layaut{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    nav{
+      position: fixed;
+      top: 0;
+      right: 20px;
+      height: 100%;
+      width: 60px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      ul{
+        background-color: #678ee9;
+        width: 100%;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        li{
+          width: 50px;
+          height: 50px;
+          border-radius: 50px;
+          margin: 5px 0;
+        }
+      }
+    }
+    main{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .myself {
+        padding: 0 40px;
+        .greeting-head {
+          text-align: left;
+          p{
+            font-family: 'Lemon-Regular';
+            font-size: 24px;
+          }
+        }
+        .greeting {
+          row-gap: 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .greeting-body {
+            text-align: left;
+            p{
+              font-family: 'Lemon-Regular';
+              font-size: 22px;
+            }
+          }
+          .my-foto {
+            margin: 20px 20px 20px 0;
+            .foto{
+              img{
+                width: 305px;
+              }
+            }
+            
+          }
+        }
+        
+      }
+      
+      .skills {
+        width: 100%;
+        .my-skills {
+          padding: 20px 0;
+          .categoy-skill {
+            display: flex;
+            justify-content: center;
+            column-gap: 10px;
+            padding: 0 10%;
+            .soft, .others, .hard{
+              width: calc(100% / 3);
+              height: auto;
+              border-radius: 15px;
+              
+              p{
+                padding: 20px 0;
+                font-size: 26px;
+                
+              }
+              ul{
+                font-family: 'Lemon-Regular';
+                text-align: left;
+                padding: 40px;
+                li{
+                  font-size: 20px;
+                }
+              }
+            }
+            .soft {
+              background-color: #80E25D;
+            }
+            .others {
+              background-color: #E2DD51;
+              margin-top: 100px;
+            }
+            .hard {
+              background-color: #F05555;
+              margin-top: 50px;
+            }
+          }
+        }
+      }
+      .project1 {
+        background: linear-gradient(180deg, rgba(0, 220, 207, 0.71) 0%, rgba(0, 87, 218, 0.71) 100%);
+        width: 100%;
+        height: 900px;
+        padding: 30px;
+        margin: 20px 0;
+        border-radius: 15px;
+        .card-conteiner {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: center;
+          p{
+            font-size: 68px;
+          }
+          .cards {
+            display: flex;
+            justify-content: center;
+            column-gap: 100px;
+            padding-top: 100px;
+            .cards-img{
+              img{
+                
+              }
+              &:nth-child(2) {
+                margin-top: -70px;
+              }
+            }
+          }
+          button{
+
+          }
+        }
+      }
+      .sorys-autorization {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        p{
+          font-size: 24px;
+        }
+        form{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          input{
+            margin: 10px 0;
+            height: 30px;
+            width: 500px;
+            border-radius: 50px;
+          }
+        }
+        button{
+          height: 40px;
+        }
+      }
+      .my-massages {
+        width: 100%;
+        background-color: #2fa0d884;
+        margin: 20px;
+        border-radius: 15px;
+        .massage-conteinr {
+          padding: 20px;
+          li{
+            text-align: left;
+            font-family: 'Lemon-Regular';
+            font-size: 24px;
+          }
+        }
+      }
+    }
+  }
+}
