@@ -12,8 +12,10 @@
   "dependencies": {
     "@react-three/drei": "^9.83.9",
     "@react-three/fiber": "^8.14.1",
+    "firebase": "^10.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.16.0",
     "three": "^0.156.1",
     "three-orbitcontrols": "^2.110.3"
   },

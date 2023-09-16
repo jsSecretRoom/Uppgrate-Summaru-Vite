@@ -38,7 +38,13 @@ function DonutsProject() {
   return (
     <section className="project2">
       <div className="main-element">
-        <p>Donuts Site!</p>
+        <div className='head'>    
+          <p>Donuts Site!</p>  
+          <button className='lock-unlock' onClick={toggleCameraLock}>
+            {isLocked ? 'Unlock?' : 'Lock?'}
+          </button>
+        </div>
+        
         <button>Visit page!</button>
       </div>
       
@@ -50,9 +56,7 @@ function DonutsProject() {
           <OrbitControls ref={controlsRef} enabled={!isLocked} />
         </Canvas>
       </div>
-      <button className='lock-unlock' onClick={toggleCameraLock}>
-        {isLocked ? 'Unlock?' : 'Lock?'}
-      </button>
+
     </section>
   );
 }
