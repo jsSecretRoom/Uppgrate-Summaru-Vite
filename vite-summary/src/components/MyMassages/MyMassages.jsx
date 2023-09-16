@@ -16,7 +16,7 @@ async function fetchMessages() {
     querySnapshot.forEach((doc) => {
       const data = doc.data();
       if (data.hasOwnProperty('massage')) {
-        messages.push({ id: doc.id, message: data['massage'] });
+        messages.push({ id: doc.id, message: data['massage'], createdBy: data['createdBy'] });
       }
     });
 
@@ -36,12 +36,24 @@ function MyMassages() {
     });
   }, []);
 
-  const handleDeleteMessage = async (messageId) => {
+  const handleDeleteMessage = async (messageId, createdByUserId) => {
     try {
-      // Удалите документ из коллекции "mymassages" по его ID
-      await deleteDoc(doc(db, 'mymassages', messageId));
-      // Обновите список сообщений после удаления
-      setMessages((prevMessages) => prevMessages.filter((message) => message.id !== messageId));
+      // Проверьте, что текущий пользователь аутентифицирован
+      const auth = db.app.auth();
+      if (auth.currentUser) {
+        const userId = auth.currentUser.uid;
+        // Проверьте, что текущий пользователь имеет право удалять сообщение
+        if (userId === createdByUserId) {
+          // Только автор сообщения может его удалить
+          await deleteDoc(doc(db, 'mymassages', messageId));
+          // Обновите список сообщений после удаления
+          setMessages((prevMessages) => prevMessages.filter((message) => message.id !== messageId));
+        } else {
+          console.error('У вас нет прав на удаление этого сообщения.');
+        }
+      } else {
+        console.error('Пользователь не аутентифицирован.');
+      }
     } catch (error) {
       console.error('Ошибка при удалении сообщения:', error);
     }
@@ -53,7 +65,9 @@ function MyMassages() {
         {messages.map((message) => (
           <li className='massage' key={message.id}>
             {message.message}
-            <button onClick={() => handleDeleteMessage(message.id)}> <img src={tresh} alt="tresh" /> </button>
+            <button onClick={() => handleDeleteMessage(message.id, message.createdBy)}>
+              <img src={tresh} alt="tresh" />
+            </button>
           </li>
         ))}
       </ul>

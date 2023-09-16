@@ -1,13 +1,43 @@
-.auth{
-    display: flex;
-    
-    p{
-        font-size: 22px;
-    }
-    .auth-popup{
+.auth {
+    width: 80%;
+    .my-messages-section {
         width: 100%;
-        button{
-            width: 400px;
+        .add-feedback {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 15px;
+            input{
+                flex-grow: 1;
+                height: 38px;
+                border-radius: 50px;
+            }
+            button{
+                height: auto;
+            }
+        }
+        
+        ul{
+            text-align: left;
+            background-color: cadetblue;
+            border-radius: 15px;
+            padding: 0 20px;
+            margin: 20px;
+            li{
+                width: 100%;
+                font-size: 22px;
+                
+                
+            }
+        }
+    }
+    .auth-popup {
+        margin: 20px;
+        p{
+            font-size: 22px;
+            font-family: Lemon-Regular;
         }
     }
 }
+
+
