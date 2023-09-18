@@ -2,21 +2,22 @@
     width: 80%;
     .my-messages-section {
         width: 100%;
-        .add-feedback {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 15px;
-            input{
-                flex-grow: 1;
-                height: 38px;
-                border-radius: 50px;
-            }
-            button{
-                height: auto;
+        form{
+            .add-feedback {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 15px;
+                input{
+                    flex-grow: 1;
+                    height: 36px;
+                    border-radius: 50px;
+                }
+                button{
+                    height: auto;
+                }
             }
         }
-        
         ul{
             text-align: left;
             background-color: cadetblue;
@@ -27,9 +28,18 @@
                 width: 100%;
                 font-size: 22px;
                 
-                
+                button{
+                    height: auto;
+                    width: auto;
+                    background-color: rgba(43, 58, 226, 0.388);
+                    img{
+                        width: 30px;
+                        height: 40px;
+                    }
+                }
             }
         }
+        
     }
     .auth-popup {
         margin: 20px;

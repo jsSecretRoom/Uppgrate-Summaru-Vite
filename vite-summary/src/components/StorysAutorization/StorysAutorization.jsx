@@ -18,7 +18,7 @@ function StorysAutorization() {
       setIsAuthenticated(true);
       setError(null);
     } else {
-      setError('Неправильный email или пароль');
+      setError('Wrong email or password!');
       setIsAuthenticated(false);
     }
   };

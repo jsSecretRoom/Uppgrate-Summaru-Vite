@@ -11,7 +11,6 @@ const STORAGE_BUCKET = import.meta.env.VITE_STORAGE_BUCKET;
 const NESSAGING_SENDER_ID = import.meta.env.VITE_MESSAGIN_SENDER_ID;
 const APP_ID = import.meta.env.VITE_APP_ID;
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: API_KEY,
   authDomain: AUTH_DOMAIN,
@@ -21,6 +20,5 @@ const firebaseConfig = {
   appId: APP_ID
 };
 
-// Initialize Firebase
-export const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig, "app" );
 export const db = getFirestore(app);

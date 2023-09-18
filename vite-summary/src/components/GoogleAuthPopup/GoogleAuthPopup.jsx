@@ -1,25 +1,45 @@
 import './GoogleAuthPopup.scss';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { collection, getDocs } from "firebase/firestore";
-import { app, db } from "../../../FirestoreSDK"; // Замените этот путь на путь к файлу с вашей конфигурацией Firebase
-
+import { addDoc, collection, getDocs, getDoc,  deleteDoc, doc } from "firebase/firestore";
+import { app, db } from "../../../FirestoreSDK";
+import { nanoid } from 'nanoid';
 import React, { useState, useEffect } from 'react';
 
-const GoogleAuthPopup = () => {
-  const auth = getAuth(app); // Передайте объект app в функцию getAuth
-  const [user, setUser] = useState(null); // Состояние для хранения информации об аутентифицированном пользователе
-  const [messages, setMessages] = useState([]); // Состояние для хранения сообщений из коллекции
+import TrashIcon from '../../assets/img/Trash.svg'
 
-  // Функция для получения сообщений из коллекции "massages-for-my"
+const GoogleAuthPopup = () => {
+  const auth = getAuth(app);
+  const [user, setUser] = useState(null);
+  const [messages, setMessages] = useState([]);
+
+  const addMessage = async (messageText) => {
+    try {
+      const randomId = nanoid();
+      const messageData = {
+        "for-my": messageText,
+        "authorId": user.uid,
+        "messageId": randomId
+      };
+
+      const messageRef = await addDoc(collection(db, "messages-for-my"), messageData);
+      const docId = messageRef.id;
+      console.log("Сообщение успешно добавлено с docId:", docId);
+
+      fetchMyMessages();
+    } catch (error) {
+      console.error("Ошибка при добавлении сообщения:", error);
+    }
+  };
+
   const fetchMyMessages = async () => {
     try {
-      const querySnapshot = await getDocs(collection(db, 'massages-for-my'));
+      const querySnapshot = await getDocs(collection(db, 'messages-for-my'));
       const myMessages = [];
 
       querySnapshot.forEach((doc) => {
         const data = doc.data();
         if (data.hasOwnProperty('for-my')) {
-          myMessages.push(data);
+          myMessages.push({ ...data, messageId: doc.id });
         }
       });
 
@@ -29,20 +49,16 @@ const GoogleAuthPopup = () => {
     }
   };
 
-  // Эффект, который будет запускаться при изменении состояния пользователя
   useEffect(() => {
-    // Если есть аутентифицированный пользователь, вызываем функцию для получения сообщений
     if (user) {
       fetchMyMessages();
     }
   }, [user]);
 
-  // Функция для сохранения информации об аутентификации в локальное хранилище
   const saveAuthenticatedUserToLocalStorage = (user) => {
     localStorage.setItem('authenticatedUser', JSON.stringify(user));
   };
 
-  // Функция для восстановления информации об аутентификации из локального хранилища
   const loadAuthenticatedUserFromLocalStorage = () => {
     const storedUser = localStorage.getItem('authenticatedUser');
     if (storedUser) {
@@ -51,7 +67,6 @@ const GoogleAuthPopup = () => {
     }
   };
 
-  // При загрузке компонента, попробуйте восстановить информацию об аутентификации из локального хранилища
   useEffect(() => {
     loadAuthenticatedUserFromLocalStorage();
   }, []);
@@ -60,30 +75,60 @@ const GoogleAuthPopup = () => {
     const provider = new GoogleAuthProvider();
     try {
       const result = await signInWithPopup(auth, provider);
-      // Аутентификация успешна, можно обрабатывать результат
       const authenticatedUser = result.user;
       console.log("Успешная аутентификация:", authenticatedUser);
-      setUser(authenticatedUser); // Устанавливаем пользователя в состояние
-      // Сохраняем информацию об аутентификации в локальное хранилище
+      setUser(authenticatedUser);
       saveAuthenticatedUserToLocalStorage(authenticatedUser);
     } catch (error) {
-      // Обработка ошибки аутентификации
       console.error("Ошибка аутентификации:", error);
+    }
+  };
+
+  const deleteMessage = async (messageId, authorId) => {
+    try {
+      const messageDocRef = doc(db, 'messages-for-my', messageId);
+      const messageDoc = await getDoc(messageDocRef);
+
+      if (messageDoc.exists()) {
+        const messageData = messageDoc.data();
+        if (messageData.authorId === authorId) {
+          await deleteDoc(messageDocRef);
+          fetchMyMessages();
+        } else {
+          console.error('У вас нет прав на удаление этого сообщения.');
+        }
+      } else {
+        console.error('Сообщение не существует.');
+      }
+    } catch (error) {
+      console.error('Ошибка при удалении сообщения:', error);
     }
   };
 
   return (
     <section className='auth'>
-      {user ? ( // Проверяем, аутентифицирован ли пользователь
+      {user ? (
         <div className='my-messages-section'>
           <h2>Feedback</h2>
-          <div className='add-feedback'>
-            <input type="text" name="Feedback" id="Feedback" placeholder='...'/>
-            <button>leave feedback</button>
-          </div>
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            addMessage(document.getElementById("Feedback").value);
+          }}>
+            <div className='add-feedback'>
+              <input type="text" name="Feedback" id="Feedback" placeholder='...' />
+              <button type="submit">leave feedback</button>
+            </div>
+          </form>
           <ul>
-            {messages.map((message, index) => (
-              <li key={index}>{message['for-my']}</li>
+            {messages.map((message) => (
+              <li key={message.messageId}>
+                {message['for-my']}
+                {message.authorId === user.uid && (
+                  <button onClick={() => deleteMessage(message.messageId, message.authorId)}>
+                    <img src={TrashIcon} alt="TrashIcon" />
+                  </button>
+                )}
+              </li>
             ))}
           </ul>
         </div>

@@ -1,0 +1,42 @@
+.skills {
+    width: 100%;
+    .my-skills {
+        padding: 20px 0;
+        .categoy-skill {
+            display: flex;
+            justify-content: center;
+            column-gap: 10px;
+            padding: 0 10%;
+            .soft, .others, .hard{
+                width: calc(100% / 3);
+                height: auto;
+                border-radius: 15px;
+            
+            p{
+                padding: 20px 0;
+                font-size: 26px;
+                
+            }
+            ul{
+                font-family: 'Lemon-Regular';
+                text-align: left;
+                padding: 40px;
+                li{
+                    font-size: 20px;
+                }
+            }
+            }
+            .soft {
+                background-color: #80E25D;
+            }
+            .others {
+                background-color: #E2DD51;
+                margin-top: 100px;
+            }
+            .hard {
+                background-color: #F05555;
+                margin-top: 50px;
+            }
+        }
+    }
+}
