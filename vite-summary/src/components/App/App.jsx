@@ -11,7 +11,7 @@ import NavComponent from '../NavComponent/NavComponent'
 import CreateMyStory from '../CreateMyStory/CreateMyStory'
 import SkillsComponnt from '../SkillsComponnt/SkillsComponnt';
 import MyselfComponent from '../MyselfComponent/MyselfComponent';
-
+import BildingSite from '../BildingSite/BildingSite';
 
 import GoogleAuthPopup from '../GoogleAuthPopup/GoogleAuthPopup';
 
@@ -36,13 +36,11 @@ function App() {
           <DecoLine/>
           <CardLoader/>
           <DonutsProject/>
-          <section className='bilding-site'>
-            
-          </section>
+          <BildingSite/>
           <DecoLine/>
 
           {isAuthenticated ? (
-            <CreateMyStory />
+            <CreateMyStory/>
           ) : (
             <StorysAutorization setIsAuthenticated={setIsAuthenticated} />
           )}

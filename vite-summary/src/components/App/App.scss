@@ -54,6 +54,9 @@
 
       footer{
         .futer-conteiner {
+          height: 70px;
+          display: flex;
+          align-items: center;
           p{
             font-family: 'Lemon-Regular';
             font-size: 22px;

@@ -1,4 +1,4 @@
-import './MyMassages.scss'; 
+import './MyMassages.scss';
 
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
@@ -29,22 +29,25 @@ async function fetchMessages() {
 
 function MyMassages() {
   const [messages, setMessages] = useState([]);
+  
 
   useEffect(() => {
     fetchMessages().then((data) => {
       setMessages(data);
     });
   }, []);
+  
+
+  const adminAuthorId = 'HfEvzwCbIAYi8qbm4LZPcaI0sBJ2'; 
 
   const handleDeleteMessage = async (messageId, createdByUserId) => {
     try {
       // Проверьте, что текущий пользователь аутентифицирован
-      const auth = db.app.auth();
-      if (auth.currentUser) {
-        const userId = auth.currentUser.uid;
+      const authenticatedUser = JSON.parse(localStorage.getItem('authenticatedUser'));
+      if (authenticatedUser) {
         // Проверьте, что текущий пользователь имеет право удалять сообщение
-        if (userId === createdByUserId) {
-          // Только автор сообщения может его удалить
+        if (authenticatedUser.uid === createdByUserId || authenticatedUser.uid === adminAuthorId) {
+          // Только автор сообщения или админ могут его удалить
           await deleteDoc(doc(db, 'mymassages', messageId));
           // Обновите список сообщений после удаления
           setMessages((prevMessages) => prevMessages.filter((message) => message.id !== messageId));

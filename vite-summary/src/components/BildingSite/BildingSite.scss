@@ -1,0 +1,48 @@
+.bilding-site{
+    overflow: hidden;
+    position: relative;
+        
+    .leftbuilding {
+        position: absolute;
+        left: 0;
+        img{
+            width: auto;
+            height: 900px;
+        }
+    }
+    .topbuilding {
+        position: absolute;
+        top: 0;
+        right: 0;
+        img{
+            width: auto;
+            height: 300px;
+        }
+    }
+    .bottombuilding {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        img{
+            width: auto;
+            height: 900px;
+        }
+    }
+    .shov-site {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        p{
+            font-size: 68px;
+        }
+        button{
+        }
+        
+    }
+    
+}
