@@ -27,7 +27,9 @@
             li{
                 width: 100%;
                 font-size: 22px;
-                
+                display: flex;
+                column-gap: 20px;
+                align-items: center;
                 button{
                     height: auto;
                     width: auto;

@@ -25,18 +25,25 @@
       p{
         font-size: 68px;
         z-index: 5;
-        color: rgb(179, 3, 188);
+        
       }
+      
       a{
         z-index: 5;
-        button{
-
+        
+        
+        p{
+          font-size: 22px;
+          color: rgb(23, 46, 197);
+          &:hover{
+            color: black;
+          }
         }
       }
     }
 
     .rotating-card {
-      width: 1100px;
+      width: 1000px;
       height: 1300px;
       position: relative;
       animation: rotate 20s linear infinite;

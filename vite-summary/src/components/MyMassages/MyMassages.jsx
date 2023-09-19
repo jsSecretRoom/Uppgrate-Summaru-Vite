@@ -1,4 +1,4 @@
-import './MyMassages.scss';
+import './MyMassages.scss'; 
 
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';

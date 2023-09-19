@@ -13,6 +13,7 @@
     "@react-three/drei": "^9.83.9",
     "@react-three/fiber": "^8.14.1",
     "firebase": "^10.4.0",
+    "intersection-observer": "^0.12.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-intersection-observer": "^9.5.2",
