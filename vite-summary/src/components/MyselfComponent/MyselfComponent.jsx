@@ -9,7 +9,7 @@ function MyselfComponent() {
             <div className='status'><p>find-work!</p></div>
             <div className='stak-info'>
                 <ul>
-                    <li>Stack</li>
+                    <li>Stack:</li>
                     <li>React + Vite</li>
                     <li>JS & Node.js</li>
                     <li>Firebase</li>
@@ -19,7 +19,9 @@ function MyselfComponent() {
                 <p>I'm a front end developer. On this page you will see my projects and learn about my technology stack.</p>
             </div>
             <div className='avatar'>
-                <img src={MyFoto} alt="MyFoto" />
+                <div className='avatar-conteiner'>
+                    <img src={MyFoto} alt="MyFoto" />
+                </div>
             </div>
             <div className='about-my'>
                 <div className='my-comteiner'>
@@ -28,7 +30,7 @@ function MyselfComponent() {
                 </div>
             </div>
             <div className='next-info'>
-                <p>next-info</p>
+                <p>next-info:</p>
                 <ul>
                     <li>wewewewew</li>
                     <li>wewewewew</li>

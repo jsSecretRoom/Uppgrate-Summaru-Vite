@@ -1,48 +1,61 @@
 .bilding-site{
+    background: linear-gradient(180deg, #0574ea 0%, #ff7044 100%);
+    width: 100%;
+    height: 900px;
+    margin: 20px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     overflow: hidden;
     position: relative;
-        
-    .leftbuilding {
-        position: absolute;
-        left: 0;
-        img{
-            width: auto;
-            height: 900px;
-        }
+    @media (min-width: 820px){
+        width: 80%;
     }
-    .topbuilding {
-        position: absolute;
-        top: 0;
-        right: 0;
-        img{
-            width: auto;
-            height: 300px;
-        }
-    }
-    .bottombuilding {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        img{
-            width: auto;
-            height: 900px;
-        }
-    }
-    .shov-site {
-        position: absolute;
+    @media (min-width: 1100px){
         width: 100%;
-        height: 100%;
+    }
+    .conteiner{
+        
         display: flex;
+        justify-content: center;
         flex-direction: column;
         align-items: center;
-        justify-content: space-between;
-        padding: 20px;
-        p{
-            font-size: 68px;
+
+        .leftbuilding {
+            position: absolute;
+            top: 0;
         }
-        button{
+        .rightbuilding{
+            position: absolute;
+            top: 0;
         }
-        
+        .topbuilding {
+            position: absolute;
+            top: 0;
+        }
+        .bottombuilding {
+            position: absolute;
+            top: 0;
+        }
+        .shov-site {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            p{
+                font-size: 68px;
+            }
+            button{
+            }
+            
+        }
     }
-    
 }

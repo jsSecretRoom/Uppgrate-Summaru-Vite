@@ -10,6 +10,7 @@ import Project1 from '../../assets/img/project1.svg';
 import Project2 from '../../assets/img/project2.svg';
 import Project3 from '../../assets/img/project3.svg';
 import Storys from '../../assets/img/storis.svg';
+import Phone from '../../assets/img/phone.svg'
 function NavComponent() {
     return ( 
         <nav>
@@ -25,7 +26,7 @@ function NavComponent() {
                     <li><a href=""><img src={Instagram} alt="Instagram" /></a></li>
                     <li><a href=""><img src={LinkedIn} alt="LinkedIn" /></a></li>
                     <li><a href=""><img src={Github} alt="Github" /></a></li>
-                    <li><a href=""><img src="" alt="" /></a></li>
+                    <li><a href=""><img src={Phone} alt="Phone" /></a></li>
                 </ul>
             </div>
             

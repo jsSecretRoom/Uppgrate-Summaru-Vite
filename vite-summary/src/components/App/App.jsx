@@ -12,9 +12,7 @@ import CreateMyStory from '../CreateMyStory/CreateMyStory'
 import SkillsComponnt from '../SkillsComponnt/SkillsComponnt';
 import MyselfComponent from '../MyselfComponent/MyselfComponent';
 import BildingSite from '../BildingSite/BildingSite';
-
 import GoogleAuthPopup from '../GoogleAuthPopup/GoogleAuthPopup';
-
 import MyMassages from '../MyMassages/MyMassages'
 
 function App() {
@@ -26,7 +24,6 @@ function App() {
       <div className='layaut'>
         <NavComponent/>
         <main>
-          
           <MyselfComponent/>
           <GoogleAuthPopup/>
           <DecoLine/>
