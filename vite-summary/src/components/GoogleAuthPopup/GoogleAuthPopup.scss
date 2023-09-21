@@ -1,5 +1,8 @@
 .auth {
-    width: 80%;
+    width: 100%;
+    @media (min-width: 820px){
+        width: 80%;
+    }
     .my-messages-section {
         width: 100%;
         form{
@@ -7,13 +10,19 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                margin: 15px;
+                flex-direction: column;
+                margin: 5px;
+                @media (min-width: 660px){
+                    flex-direction: row;
+                    margin: 15px;
+                }
                 input{
                     flex-grow: 1;
                     height: 36px;
                     border-radius: 50px;
                 }
                 button{
+                    width: 290px;
                     height: auto;
                 }
             }
@@ -26,10 +35,13 @@
             margin: 20px;
             li{
                 width: 100%;
-                font-size: 22px;
+                font-size: 16px;
                 display: flex;
                 column-gap: 20px;
                 align-items: center;
+                @media (min-width: 660px){
+                    font-size: 22px;
+                }
                 button{
                     height: auto;
                     width: auto;
@@ -44,10 +56,17 @@
         
     }
     .auth-popup {
-        margin: 20px;
+        margin: 0px;
+        
         p{
-            font-size: 22px;
+            font-size: 18px;
             font-family: Lemon-Regular;
+        }
+        @media (min-width: 660px){
+            margin: 20px;
+            p{
+                font-size: 22px;
+            }
         }
     }
 }

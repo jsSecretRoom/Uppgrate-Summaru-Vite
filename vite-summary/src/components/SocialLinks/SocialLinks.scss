@@ -4,13 +4,6 @@
     .links-conteiner{
       height: 90px;
       margin: 0 20px;
-      @media (min-width: 820px){
-        height: 120px;
-          ul{
-            justify-content: center;
-            column-gap: 10%;
-          }
-      }
       ul{
         display: flex;
         justify-content: space-around;
@@ -31,6 +24,13 @@
               }
             }
           }
+        }
+      }
+      @media (min-width: 820px){
+        height: 120px;
+        ul{
+          justify-content: center;
+          column-gap: 10%;
         }
       }
     }  

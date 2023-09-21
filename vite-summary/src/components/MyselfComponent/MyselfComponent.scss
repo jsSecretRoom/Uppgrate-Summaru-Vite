@@ -27,7 +27,7 @@
         text-align: left;
         li{
           color: black;
-          font-size: 22px;
+          font-size: 18px;
         }
       }
     }
@@ -39,7 +39,10 @@
       padding: 20px;
       font-family: 'Lemon-Regular';
       p{
-        font-size: 22px;
+        font-size: 16px;
+        @media (min-width: 660px){
+          font-size: 22px;
+        }
       }
     }
     .status{
@@ -57,7 +60,10 @@
         height: 100%;
         
         img{
-          width: 300px;
+          width: 220px;
+          @media (min-width: 660px){
+            width: 300px;
+          }
         }
       }
     }
@@ -82,8 +88,10 @@
       grid-column: 1 / 4;
       grid-row: 6;
       background-color: #4239A0;
-      padding: 20px 40px;
-      
+      padding: 10px;
+      @media (min-width: 660px){
+        padding: 20px 40px;
+      }
       p{}
       ul{
 

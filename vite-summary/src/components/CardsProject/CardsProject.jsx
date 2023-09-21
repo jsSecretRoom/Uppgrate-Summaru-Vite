@@ -92,6 +92,7 @@ function CardsProject({ allCards }) {
           </a>
         </div>
         <div className='rotating-card'>
+          
           <div className='top-line'>
             <div className='rectangle' ref={cardRefs[0]}>
               <CardComponent randomCard={randomCard1}/>

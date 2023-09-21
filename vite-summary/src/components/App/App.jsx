@@ -25,6 +25,7 @@ function App() {
         <NavComponent/>
         <main>
           <MyselfComponent/>
+          
           <GoogleAuthPopup/>
           <DecoLine/>
           <SocialLinks/>

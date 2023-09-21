@@ -16,17 +16,22 @@ function NavComponent() {
         <nav>
             <div className='nav-conteiner'>
                 <ul>
-                    <li><a href=""><img src={User} alt="User" /></a></li>
-                    <li><a href=""><img src={Skill} alt="Skill" /></a></li>
-                    <li><a href=""><img src={Project1} alt="Project1" /></a></li>
-                    <li><a href=""><img src={Project2} alt="Project2" /></a></li>
-                    <li><a href=""><img src={Project3} alt="Project3" /></a></li>
-                    <li><a href=""><img src={Storys} alt="Storys" /></a></li>
-                    <li><a href=""><img src={Telegram} alt="Telegram" /></a></li>
-                    <li><a href=""><img src={Instagram} alt="Instagram" /></a></li>
-                    <li><a href=""><img src={LinkedIn} alt="LinkedIn" /></a></li>
-                    <li><a href=""><img src={Github} alt="Github" /></a></li>
-                    <li><a href=""><img src={Phone} alt="Phone" /></a></li>
+                    <div className='line'>
+                        <li><a href=""><img src={User} alt="User" /></a></li>
+                        <li><a href=""><img src={Skill} alt="Skill" /></a></li>
+                        <li><a href=""><img src={Project1} alt="Project1" /></a></li>
+                        <li><a href=""><img src={Project2} alt="Project2" /></a></li>
+                        <li><a href=""><img src={Project3} alt="Project3" /></a></li>
+                        <li><a href=""><img src={Storys} alt="Storys" /></a></li>
+                    </div>
+                    <div className='line'>
+                        <li><a href=""><img src={Telegram} alt="Telegram" /></a></li>
+                        <li><a href=""><img src={Instagram} alt="Instagram" /></a></li>
+                        <li><a href=""><img src={LinkedIn} alt="LinkedIn" /></a></li>
+                        <li><a href=""><img src={Github} alt="Github" /></a></li>
+                        <li><a href=""><img src={Phone} alt="Phone" /></a></li>
+                    </div>
+                    
                 </ul>
             </div>
             

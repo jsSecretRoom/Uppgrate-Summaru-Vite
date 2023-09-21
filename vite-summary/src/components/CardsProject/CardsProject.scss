@@ -1,13 +1,16 @@
 .project1 {
   background: linear-gradient(180deg, rgba(0, 220, 207, 0.71) 0%, rgba(0, 87, 218, 0.71) 100%);
   width: 100%;
-  height: 900px;
-  padding: 30px;
-  margin: 20px 0;
-  border-radius: 15px;
+  height: 600px;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 0;
   overflow: hidden;
   @media (min-width: 820px){
     width: 80%;
+    margin: 20px 0;
+    height: 900px;
+    border-radius: 15px;
   }
   @media (min-width: 1100px){
     width: 100%;
@@ -29,8 +32,11 @@
       justify-content: space-between;
       
       p{
-        font-size: 68px;
+        font-size: 38px;
         z-index: 5;
+        @media (min-width: 660px){
+          font-size: 68px;
+        }
       }
       
       a{
@@ -48,13 +54,21 @@
     }
 
     .rotating-card {
+      max-width: 1600px;
       width: 100%;
       height: 1300px;
       position: relative;
       animation: rotate 20s linear infinite;
       top: 100px;
+      @media (min-width: 660px){
+        top: 120px;
+      }
+      @media (min-width: 820px){
+        top: 200px;
+      }
       @media (min-width: 1100px){
         width: 1000px;
+        top: 100px;
       }
       .top-line, .bottom-line, .left-line, .right-line {
         position: absolute;
@@ -82,6 +96,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
       }
       .bottom-line {
         bottom: 0;
@@ -91,20 +106,28 @@
         align-items: center;
       }
       .left-line {
-        left: 0;
+        left: 300px;
         height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        @media (min-width: 660px){
+          
+          left: 0;
+        }
       }
       .right-line {
-        right: 0;
+        right: 300px;
         height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        @media (min-width: 660px){
+          
+          right: 0;
+        }
       }
     }
     @keyframes rotate {
