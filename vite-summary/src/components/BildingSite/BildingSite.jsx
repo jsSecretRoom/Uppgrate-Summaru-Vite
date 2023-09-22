@@ -1,10 +1,21 @@
 import './BildingSite.scss';
+
 import topbuilding from '../../assets/img/topbuilding.svg';
 import bottombuilding from '../../assets/img/bottombuilding.svg';
 import leftbuilding from '../../assets/img/leftbilding.svg';
 import rightbuilding from '../../assets/img/rightBuilding.svg';
 
+import { useEffect } from 'react';
+
+import Animations from '../Animations/Animations';
+
 function BildingSite() {
+    useEffect( () => {
+        Animations('.leftbuilding');
+        Animations('.rightbuilding');
+        Animations('.topbuilding');
+        Animations('.bottombuilding');
+    });
     return ( 
         <section className='bilding-site' id='project3'>
             <div className='conteiner'>

@@ -112,7 +112,9 @@ const GoogleAuthPopup = () => {
   
   useEffect(() => {
     Animations('.add-feedback');
+    Animations('.auth');
   });
+
 
   return (
     <section className='auth'>

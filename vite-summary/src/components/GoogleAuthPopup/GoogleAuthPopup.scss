@@ -3,6 +3,16 @@
     @media (min-width: 820px){
         width: 80%;
     }
+
+    opacity: 0;
+    transform:  translateY(-100%);
+    transition: opacity 1.5s, transform 1s;
+    
+    &.animate {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
     .my-messages-section {
         width: 100%;
         form{
@@ -42,6 +52,7 @@
             margin: 20px;
             .massages-conteiner{
                 padding: 0 20px;
+                margin: 5px 0;
                 opacity: 0;
                 transform:  translateX(-100%);
                 transition: opacity 1.5s, transform 1s;
@@ -75,7 +86,7 @@
         
     }
     .auth-popup {
-        margin: 0px;
+        margin: 20px 0px;
         
         p{
             font-size: 18px;

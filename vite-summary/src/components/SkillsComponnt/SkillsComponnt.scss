@@ -27,6 +27,7 @@
                 width: 100%;
                 height: auto;
                 border-radius: 0px;
+                
                 @media (min-width: 820px){
                     border-radius: 15px;
                 }
@@ -51,15 +52,69 @@
 
                 }
             }
+
             .soft {
                 background-color: #80E25D;
-            }
-            .others {
-                background-color: #E2DD51;
             }
             .hard {
                 background-color: #F05555;
             }
+            .others {
+                background-color: #E2DD51;
+            }
+            
+            @media (max-width: 1100px){
+                .soft, .others, .hard{
+
+                    opacity: 0;
+                    transition: opacity 2s, transform 1s;
+                    transform: translateX(-200%);
+                    
+                    &.animate{
+                      opacity: 1;
+                      transform: translateX(0);
+                    }
+                }
+            }
+            
+            @media (min-width: 1100px){
+
+                .soft {
+                    background-color: #80E25D;
+    
+                    transform: scaleY(0);
+                    transform-origin: bottom;
+                    transition: transform 1s ease-in-out;
+                    &.animate{
+                        transform: scaleY(1);
+                    }
+                }
+                .hard {
+                    background-color: #F05555;
+                    
+                    transform: scaleY(0);
+                    transform-origin: bottom;
+                    transition: transform 2s ease-in-out;
+                    
+                    &.animate{
+                        transform: scaleY(1);
+                    }
+                }
+                .others {
+                    background-color: #E2DD51;
+    
+                    transform: scaleY(0);
+                    transform-origin: bottom;
+                    transition: transform 3s ease-in-out;
+                    
+                    &.animate{
+                        transform: scaleY(1);
+                    }
+                }
+                
+            }
+            
+
         }
     }
 }

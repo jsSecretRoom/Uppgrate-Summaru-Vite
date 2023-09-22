@@ -4,6 +4,16 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 5px;
     border-radius: 10px;
+
+    opacity: 0;
+    transition: opacity 2s, transform 1s;
+    transform: translateX(-200%);
+    
+    &.animate{
+      opacity: 1;
+      transform: translateX(0);
+    }
+
     .card-head {
         background-color: white;
         height: 300px;

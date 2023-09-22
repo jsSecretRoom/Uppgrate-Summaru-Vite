@@ -1,5 +1,14 @@
 import './SkillsComponnt.scss'
+import { useEffect } from 'react';
+import Animations from '../Animations/Animations';
+
 function SkillsComponnt() {
+
+    useEffect(()=>{
+        Animations('.soft');
+        Animations('.hard');
+        Animations('.others');
+    })
     return ( 
         <section className='skills' id='skills'>
             <div className='my-skills'>

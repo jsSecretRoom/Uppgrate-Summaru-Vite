@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Animations from '../Animations/Animations';
 import './StorysAutorization.scss';
 
 // Импортируйте компонент CreateMyStory
@@ -22,6 +23,10 @@ function StorysAutorization() {
       setIsAuthenticated(false);
     }
   };
+
+  useEffect(() => {
+    Animations('.storys-autorization');
+  });
 
   return (
     <section className='storys-autorization'>

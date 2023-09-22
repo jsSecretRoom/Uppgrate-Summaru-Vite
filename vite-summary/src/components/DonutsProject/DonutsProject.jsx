@@ -1,9 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState} from 'react';
 import './DonutsProject.scss';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
 import { OrbitControls } from '@react-three/drei';
+
+
 
 function Model() {
   const gltf = useLoader(GLTFLoader, '../src/assets/donutModell/scene.gltf');
@@ -34,6 +36,8 @@ function DonutsProject() {
       controlsRef.current.enabled = !isLocked;
     }
   };
+
+
 
   return (
     <section className="project2" id='project2'>

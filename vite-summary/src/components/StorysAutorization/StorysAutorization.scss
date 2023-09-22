@@ -4,6 +4,16 @@
     align-items: center;
     padding: 5px;
     width: 100%;
+
+    opacity: 0;
+    transition: opacity 2s, transform 1s;
+    transform: translateX(-200%);
+    
+    &.animate{
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
     @media (min-width: 660px){
       padding: 20px;
     }

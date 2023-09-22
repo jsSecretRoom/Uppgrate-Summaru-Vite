@@ -20,7 +20,6 @@
         width: 100%;
     }
     .conteiner{
-        
         display: flex;
         justify-content: center;
         flex-direction: column;
@@ -29,18 +28,54 @@
         .leftbuilding {
             position: absolute;
             top: 0;
+
+            opacity: 0;
+            transition: opacity 3.5s, transform 3.5s;
+            transform: translateX(-100%);
+            
+            &.animate{
+              opacity: 1;
+              transform: translateX(0);
+            }
         }
         .rightbuilding{
             position: absolute;
             top: 0;
+
+            opacity: 0;
+            transition: opacity 2.5s, transform 2.5s;
+            transform: translateX(100%);
+            
+            &.animate{
+              opacity: 1;
+              transform: translateX(0);
+            }
         }
         .topbuilding {
             position: absolute;
             top: 0;
+
+            opacity: 0;
+            transition: opacity 3s, transform 3s;
+            transform: translateY(-100%);
+            
+            &.animate{
+              opacity: 1;
+              transform: translateY(0);
+            }
         }
         .bottombuilding {
             position: absolute;
             top: 0;
+
+            opacity: 0;
+            transition: opacity 2s, transform 2s;
+            transform: translateY(100%);
+            
+            &.animate{
+              opacity: 1;
+              transform: translateY(0);
+            }
         }
         .shov-site {
             position: absolute;

@@ -2,6 +2,8 @@ import './App.scss'
 
 import { useState } from 'react';
 
+import ParticleAnimation from '../Animations/ParticleAnimation';
+
 import DecoLine from '../DecoLine/DecoLine'
 import DonutsProject from '../DonutsProject/DonutsProject'
 import SocialLinks from '../SocialLinks/SocialLinks'
@@ -20,7 +22,7 @@ function App() {
 
   return (
     <>
-      <div className='decoraton-head'></div>
+      <ParticleAnimation/>
       <div className='layaut'>
         <NavComponent/>
         <main>
@@ -41,7 +43,7 @@ function App() {
           ) : (
             <StorysAutorization setIsAuthenticated={setIsAuthenticated} />
           )}
-
+ 
           <DecoLine/>
           <MyMassages/>
           <DecoLine/>

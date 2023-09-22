@@ -1,8 +1,11 @@
 import './CardComponent.scss';
 import DefaultImage from '../../assets/img/errorImg.svg';
 import FavoriteImg from '../../assets/img/Favorite.svg';
+import Animations from '../Animations/Animations';
+import { useEffect } from 'react';
 
 function CardComponent({ randomCard }) {
+
   function truncateText(text, maxLength) {
     if (text.length > maxLength) {
       return text.substring(0, maxLength) + '...';
@@ -10,6 +13,9 @@ function CardComponent({ randomCard }) {
       return text;
     }
   }
+  useEffect( () => {
+    Animations('.card');
+  })
 
   return (
     <div className="card" style={{
