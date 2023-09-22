@@ -7,6 +7,15 @@
         width: 100%;
         form{
             .add-feedback {
+                opacity: 0;
+                transform:  translateX(-100%);
+                transition: opacity 1.5s, transform 1s;
+                
+                &.animate {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+                
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -20,6 +29,7 @@
                     flex-grow: 1;
                     height: 36px;
                     border-radius: 50px;
+                    margin-right: 5px ;
                 }
                 button{
                     width: 290px;
@@ -29,11 +39,20 @@
         }
         ul{
             text-align: left;
-            background-color: cadetblue;
-            border-radius: 15px;
-            padding: 0 20px;
             margin: 20px;
-            li{
+            .massages-conteiner{
+                padding: 0 20px;
+                opacity: 0;
+                transform:  translateX(-100%);
+                transition: opacity 1.5s, transform 1s;
+                
+                &.animate {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+
+                border-radius: 15px;
+                background-color: cadetblue;
                 width: 100%;
                 font-size: 16px;
                 display: flex;
@@ -61,12 +80,6 @@
         p{
             font-size: 18px;
             font-family: Lemon-Regular;
-        }
-        @media (min-width: 660px){
-            margin: 20px;
-            p{
-                font-size: 22px;
-            }
         }
     }
 }

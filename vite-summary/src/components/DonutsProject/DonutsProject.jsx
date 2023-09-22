@@ -36,7 +36,7 @@ function DonutsProject() {
   };
 
   return (
-    <section className="project2">
+    <section className="project2" id='project2'>
       <div className="main-element">
         <div className='head'>    
           <p>Donuts Site!</p>  

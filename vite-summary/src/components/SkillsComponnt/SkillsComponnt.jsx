@@ -1,7 +1,7 @@
 import './SkillsComponnt.scss'
 function SkillsComponnt() {
     return ( 
-        <section className='skills'>
+        <section className='skills' id='skills'>
             <div className='my-skills'>
                 <h3>Skills</h3>
                 <div className='categoy-skill'>

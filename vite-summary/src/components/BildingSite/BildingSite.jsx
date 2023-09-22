@@ -6,7 +6,7 @@ import rightbuilding from '../../assets/img/rightBuilding.svg';
 
 function BildingSite() {
     return ( 
-        <section className='bilding-site'>
+        <section className='bilding-site' id='project3'>
             <div className='conteiner'>
                 <div className='leftbuilding'><img src={leftbuilding} alt="leftbuilding" /></div>
                 <div className='rightbuilding'><img src={rightbuilding} alt="rightbuilding" /></div>

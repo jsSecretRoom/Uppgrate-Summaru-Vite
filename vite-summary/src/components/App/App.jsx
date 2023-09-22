@@ -25,7 +25,6 @@ function App() {
         <NavComponent/>
         <main>
           <MyselfComponent/>
-          
           <GoogleAuthPopup/>
           <DecoLine/>
           <SocialLinks/>
@@ -48,7 +47,7 @@ function App() {
           <DecoLine/>
           <SocialLinks/>
           <DecoLine/>
-          <footer>
+          <footer id='phone'>
             <div className='futer-conteiner'>
               <p>Phone: +380677076893</p>
             </div>

@@ -5,16 +5,32 @@
         width: 80%;
     }
     .massage-container {
-        background-color: #2fa0d884;
+
+
         margin: 20px;
-        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 5px;
         .massage {
+            border-radius: 15px;
+            background-color: #2fa0d884;
             display: flex;
+            
             padding: 5px 20px;
             font-size: 16px;
             align-items: center;
             height: 50px;
             column-gap: 10px;
+
+            opacity: 0;
+            transform:  translateX(-100%);
+            transition: opacity 1.5s, transform 1s;
+    
+            &.animate {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
             @media (min-width: 660px){
                 font-size: 20px;
                 padding: 20px;

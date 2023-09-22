@@ -1,10 +1,15 @@
 import './MyselfComponent.scss'
 
 import MyFoto from '../../assets/my-foto.png'
-
+import Animations from '../Animations/Animations';
+import { useEffect } from 'react';
 function MyselfComponent() {
+    useEffect(() => {   
+        Animations('.avatar-conteiner');
+        Animations('.my-comteiner');
+    });
     return ( 
-        <section className='myself'>
+        <section className='myself' id="user">
             <div className='greeting'><h1>Nice to meet you!</h1></div>
             <div className='status'><p>find-work!</p></div>
             <div className='stak-info'>

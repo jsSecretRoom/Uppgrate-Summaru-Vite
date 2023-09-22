@@ -5,6 +5,7 @@ import { app, db } from "../../../FirestoreSDK";
 import { nanoid } from 'nanoid';
 import React, { useState, useEffect } from 'react';
 
+import Animations from '../Animations/Animations';
 import TrashIcon from '../../assets/img/Trash.svg'
 
 const GoogleAuthPopup = () => {
@@ -105,6 +106,14 @@ const GoogleAuthPopup = () => {
     }
   };
 
+  useEffect(() => {
+    Animations('.massages-conteiner');
+  },[messages]);
+  
+  useEffect(() => {
+    Animations('.add-feedback');
+  });
+
   return (
     <section className='auth'>
       {user ? (
@@ -121,7 +130,7 @@ const GoogleAuthPopup = () => {
           </form>
           <ul>
             {messages.map((message) => (
-              <li key={message.messageId}>
+              <li className='massages-conteiner' key={message.messageId}>
                 {message['for-my']}
                 {message.authorId === user.uid && (
                   <button onClick={() => deleteMessage(message.messageId, message.authorId)}>

@@ -1,5 +1,5 @@
 import './MyMassages.scss';
-
+import Animations from '../Animations/Animations';
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import { db } from '../../../FirestoreSDK';
@@ -38,6 +38,7 @@ function MyMassages() {
   }, []);
   
 
+
   const adminAuthorId = 'HfEvzwCbIAYi8qbm4LZPcaI0sBJ2'; 
 
   const handleDeleteMessage = async (messageId, createdByUserId) => {
@@ -62,8 +63,13 @@ function MyMassages() {
     }
   };
 
+  useEffect(() => {
+    Animations('.massage');
+
+  }, [messages]); 
+
   return ( 
-    <section className='my-massages'>
+    <section className='my-massages' id='stories'>
       <ul className='massage-container'>
         {messages.map((message) => (
           <li className='massage' key={message.id}>

@@ -81,7 +81,7 @@ function CardsProject({ allCards }) {
   }, [allCards]);
 
   return (
-    <section className='project1' ref={project1Ref}>
+    <section className='project1' ref={project1Ref} id='project1'>
       <div className='card-conteiner'>
         <div className='block-frame'>
           <p>Product cart creator!</p>
