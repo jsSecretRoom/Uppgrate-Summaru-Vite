@@ -22,7 +22,7 @@ function MyselfComponent() {
                 </ul>
             </div>
             <div className='greeting-text'>
-                <p>I'm a front end developer. On this page you will see my projects and learn about my technology stack.</p>
+                <p>On this page you can: get to know me, explore my personal projects, get to know my creative endeavors and achievements, read my diary and leave a review about me, and contact me.</p>
             </div>
             <div className='avatar'>
                 <div className='animation-block'>
@@ -31,19 +31,23 @@ function MyselfComponent() {
                     </div>
                     <div className='my-comteiner'>
                         <h2>My name is Ruslan!</h2>
-                        <p>I am 23 years old, Mykolaiv Ukaina! I do most of the development in the second half of the year and get results in your field! At this stage, you can find your job, recognition, etc. d. projects with the possibility of their assessment! My metabolic rate and speed! I use new standards for writing code that validates new ones methods where necessary.</p>
+                        <p>I'm 23 years old, and I live in Mykolaiv, Ukraine. I am a frontend developer working in the field of web development. My goal is to achieve noticeable results and enhance the quality of user interfaces.
+                            My skills in quick learning and working at a high pace help me effectively reach set objectives. I always adhere to modern coding standards and apply the latest methods when necessary. My aim is to create user interfaces that meet the new standards of quality."</p>
                     </div>
                 </div>
             </div>
 
             <div className='next-info'>
-                <p>next-info:</p>
+                <p>I'm working with:</p>
                 <ul>
-                    <li>wewewewew</li>
-                    <li>wewewewew</li>
-                    <li>wewewewew</li>
-                    <li>wewewewew</li>
-                    <li>wewewewew</li>
+                    <li>React Router</li>
+                    <li>Redux + Tulkit</li>
+                    <li>Axios</li>
+                    <li>SCSS modules</li>
+                    <li>React Select</li>
+                    <li>React Hook Form</li>
+                    <li>js-Cookie</li>
+                    <li>React Query</li>
                 </ul>
             </div>
         </section>

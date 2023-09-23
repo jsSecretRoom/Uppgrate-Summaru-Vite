@@ -17,34 +17,40 @@ function SkillsComponnt() {
                     <div className='soft'>
                     <p>Soft</p>
                     <ul>
-                        <li>Creative</li>
-                        <li>Not conflicting</li>
-                        <li>Stress resistant</li>
-                        <li>Punctual</li>
-                        <li>I know how to convince</li>
-                        <li>I know how to evaluate people</li>
+                        <li>Creative.</li>
+                        <li>Not conflicting.</li>
+                        <li>Stress resistant.</li>
+                        <li>Punctual.</li>
+                        <li>Organized.</li>
+                        <li>English B1.</li>
+                        <li>I know how to convince.</li>
+                        <li>I know how to evaluate people.</li>
+                        <li>I'm quick to look for information</li>
+                        
                     </ul>
                     </div>
                     <div className='hard'>
                     <p>Hard</p>
                     <ul>
-                        <li>Creative</li>
-                        <li>Not conflicting</li>
-                        <li>Stress resistant</li>
-                        <li>Punctual</li>
-                        <li>I know how to convince</li>
-                        <li>I know how to evaluate people</li>
+                        <li>Knowledge of basic backend technologies.</li>
+                        <li>Understanding the REST API.</li>
+                        <li>JavaScript.</li>
+                        <li>JSX/HTML/SCSS.</li>
+                        <li>Firestore.</li>
+                        <li>React.</li>
+                        <li>Development of adaptive interfaces.</li>
+                        <li>Understanding UX/UI.</li>
                     </ul>
                     </div>
                     <div className='others'>
                     <p>Others</p>
                     <ul>
-                        <li>Creative</li>
-                        <li>Not conflicting</li>
-                        <li>Stress resistant</li>
-                        <li>Punctual</li>
-                        <li>I know how to convince</li>
-                        <li>I know how to evaluate people</li>
+                        <li>Work with graphics.</li>
+                        <li>Collaboration with chat GPT.</li>
+                        <li></li>
+                        <li>Photoshop</li>
+                        <li>Figma</li>
+                        <li></li>
                     </ul>
                     </div>
                 </div>

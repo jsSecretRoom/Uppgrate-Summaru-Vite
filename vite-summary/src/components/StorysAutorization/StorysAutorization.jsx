@@ -30,7 +30,7 @@ function StorysAutorization() {
 
   return (
     <section className='storys-autorization'>
-      <p>Event creator</p>
+      <p>Diary authorization</p>
       {isAuthenticated ? (
         <CreateMyStory />
       ) : (

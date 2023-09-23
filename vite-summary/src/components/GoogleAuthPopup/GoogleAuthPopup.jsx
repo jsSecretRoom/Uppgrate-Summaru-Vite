@@ -126,7 +126,7 @@ const GoogleAuthPopup = () => {
             addMessage(document.getElementById("Feedback").value);
           }}>
             <div className='add-feedback'>
-              <input type="text" name="Feedback" id="Feedback" placeholder='...' />
+              <input type="text" name="Feedback" id="Feedback" placeholder='Write something about me or for me!' />
               <button type="submit">leave feedback</button>
             </div>
           </form>

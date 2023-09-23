@@ -1,10 +1,10 @@
+import React, { useCallback, useEffect, useState } from 'react';
 import Particles from 'react-particles';
-import { useCallback } from 'react';
 import { loadSlim } from 'tsparticles-slim';
 
-
-
 const ParticleAnimation = () => {
+    const [particleCount, setParticleCount] = useState(60);
+
     const particlesInit = useCallback(async (engine) => {
         await loadSlim(engine);
     }, []);
@@ -13,19 +13,64 @@ const ParticleAnimation = () => {
         // Do something when particles are loaded
     }, []);
 
+    useEffect(() => {
+        const handleResize = () => {
+            const screenWidth = window.innerWidth;
+            if (screenWidth < 660) {
+                // Установите меньшее значение для меньших экранов
+                setParticleCount(20); // Например, 30 частиц
+            } else {
+                setParticleCount(50); // Значение для больших экранов
+            }
+        };
+
+        // Добавьте слушатель события изменения размера окна
+        window.addEventListener('resize', handleResize);
+
+        // Вызывайте handleResize при монтировании компонента
+        handleResize();
+
+        // Удалите слушатель события изменения размера окна при размонтировании компонента
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     return (
         <Particles
             id="tsparticles"
             init={particlesInit}
             loaded={particlesLoaded}
             options={{
-				background: {
+                background: {
                     color: {
                         value: "#3a5e7f",
                     },
                 },
+                interactivity: {
+                    events: {
+                        onClick: {
+                            enable: false,
+                            mode: "push",
+                        },
+                        onHover: {
+                            enable: true,
+                            mode: "repulse",
+                        },
+                        resize: true,
+                    },
+                    modes: {
+                        push: {
+                            quantity: 4,
+                        },
+                        repulse: {
+                            distance: 100,
+                            duration: 0.4,
+                        },
+                    },
+                },
                 particles: {
-					fpsLimit: 90,
+                    fpsLimit: 90,
                     color: {
                         value: '#ffffff',
                     },
@@ -48,10 +93,10 @@ const ParticleAnimation = () => {
                     },
                     number: {
                         density: {
-                            enable: true,
-                            area: 2200,
+                            enable: false,
+                            area: 2000,
                         },
-                        value: 80,
+                        value: particleCount, // Используйте текущее значение particleCount
                     },
                     opacity: {
                         value: 0.5,
@@ -61,23 +106,23 @@ const ParticleAnimation = () => {
                         image: [
                             {
                                 src: '../../../src/assets/img/vite.svg',
-                                height: 20,
-                                width: 20,
+                                height: 10,
+                                width: 10,
                             },
                             {
                                 src: '../../../src/assets/img/reactico.svg',
-                                height: 20,
-                                width: 20,
+                                height: 10,
+                                width: 10,
                             },
                             {
                                 src: '../../../src/assets/img/firebase.svg',
-                                height: 20,
-                                width: 20,
+                                height: 10,
+                                width: 10,
                             },
                             {
                                 src: '../../../src/assets/img/nodejsico.svg',
-                                height: 20,
-                                width: 20,
+                                height: 10,
+                                width: 10,
                             },
                         ],
                     },
@@ -85,7 +130,7 @@ const ParticleAnimation = () => {
                         value: { min: 10, max: 25 },
                     },
                 },
-                detectRetina: true,
+                detectRetina: false,
             }}
         />
     );
