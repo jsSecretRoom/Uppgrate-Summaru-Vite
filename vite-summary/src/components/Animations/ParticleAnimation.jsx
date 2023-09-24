@@ -21,11 +21,12 @@ const ParticleAnimation = () => {
     useEffect(() => {
         const handleResize = () => {
             const screenWidth = window.innerWidth;
-            if (screenWidth < 660) {
-                // Установите меньшее значение для меньших экранов
-                setParticleCount(20); // Например, 30 частиц
+            if (screenWidth < 512) {
+                setParticleCount(8); 
+            } else if(screenWidth < 768) {
+                setParticleCount(20);
             } else {
-                setParticleCount(50); // Значение для больших экранов
+                setParticleCount(45);
             }
         };
 
