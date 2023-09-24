@@ -2,6 +2,11 @@ import React, { useCallback, useEffect, useState } from 'react';
 import Particles from 'react-particles';
 import { loadSlim } from 'tsparticles-slim';
 
+import viteimg from '../../assets/img/vite.svg';
+import reactimg from '../../assets/img/reactico.svg';
+import firebaseimg from '../../assets/img/firebase.svg';
+import nodejsimg from '../../assets/img/nodejsico.svg';
+
 const ParticleAnimation = () => {
     const [particleCount, setParticleCount] = useState(60);
 
@@ -44,7 +49,7 @@ const ParticleAnimation = () => {
             options={{
                 background: {
                     color: {
-                        value: "#3a5e7f",
+                        value: "#26547f",
                     },
                 },
                 interactivity: {
@@ -105,22 +110,22 @@ const ParticleAnimation = () => {
                         type: 'image',
                         image: [
                             {
-                                src: '/src/assets/img/vite.svg',
+                                src: viteimg,
                                 height: 10,
                                 width: 10,
                             },
                             {
-                                src: '/src/assets/img/reactico.svg',
+                                src: reactimg,
                                 height: 10,
                                 width: 10,
                             },
                             {
-                                src: '/src/assets/img/firebase.svg',
+                                src: firebaseimg,
                                 height: 10,
                                 width: 10,
                             },
                             {
-                                src: '/src/assets/img/nodejsico.svg',
+                                src: nodejsimg,
                                 height: 10,
                                 width: 10,
                             },
