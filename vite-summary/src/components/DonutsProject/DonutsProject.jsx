@@ -5,7 +5,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
 import { OrbitControls } from '@react-three/drei';
 
 function Model() {
-  const gltf = useLoader(GLTFLoader, '/public/donutModell/scene.gltf');
+  const gltf = useLoader(GLTFLoader, '/donutModell/scene.gltf');
   const modelRef = useRef();
 
   useFrame(() => {
