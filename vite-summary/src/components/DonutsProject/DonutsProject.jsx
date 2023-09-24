@@ -37,6 +37,7 @@ function DonutsProject() {
 
   return (
     <section className="project2" id="project2">
+      <div className={`touch-window ${isLocked ? 'activ' : ''}`}></div>
       <div className="main-element">
         <div className="head">
           <p>Donuts Site!</p>
@@ -44,10 +45,10 @@ function DonutsProject() {
             {isLocked ? 'Unlock?' : 'Lock?'}
           </button>
         </div>
-
+  
         <button>Visit page!</button>
       </div>
-
+  
       <div className="donut-game-block">
         <Canvas>
           <ambientLight intensity={100} color={0x404040} />

@@ -6,12 +6,23 @@
     background: linear-gradient(180deg, rgba(255, 235, 14, 0.7) 0%, rgba(251, 15, 224, 0.7) 100%);
     border-radius: 0px;
     margin: 0;
+    touch-action: cross-slide-y;
     @media (min-width: 820px){
         border-radius: 15px;
         margin: 20px 0;
         width: 80%;
         height: 900px;
     }
+    .touch-window{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        &.activ{
+            z-index: 1;
+        }
+    }
+
     .main-element {
         position: absolute;
         top: 0;
