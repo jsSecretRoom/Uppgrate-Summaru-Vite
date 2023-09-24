@@ -105,22 +105,22 @@ const ParticleAnimation = () => {
                         type: 'image',
                         image: [
                             {
-                                src: '../../../src/assets/img/vite.svg',
+                                src: '/src/assets/img/vite.svg',
                                 height: 10,
                                 width: 10,
                             },
                             {
-                                src: '../../../src/assets/img/reactico.svg',
+                                src: '/src/assets/img/reactico.svg',
                                 height: 10,
                                 width: 10,
                             },
                             {
-                                src: '../../../src/assets/img/firebase.svg',
+                                src: '/src/assets/img/firebase.svg',
                                 height: 10,
                                 width: 10,
                             },
                             {
-                                src: '../../../src/assets/img/nodejsico.svg',
+                                src: '/src/assets/img/nodejsico.svg',
                                 height: 10,
                                 width: 10,
                             },
