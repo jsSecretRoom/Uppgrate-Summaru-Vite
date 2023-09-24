@@ -22,7 +22,7 @@ const ParticleAnimation = () => {
         const handleResize = () => {
             const screenWidth = window.innerWidth;
             if (screenWidth < 512) {
-                setParticleCount(8); 
+                setParticleCount(0); 
             } else if(screenWidth < 768) {
                 setParticleCount(20);
             } else {
