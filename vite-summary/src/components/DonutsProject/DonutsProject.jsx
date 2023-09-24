@@ -8,7 +8,7 @@ import { OrbitControls } from '@react-three/drei';
 
 
 function Model() {
-  const gltf = useLoader(GLTFLoader, '/src/assets/donutModell/scene.gltf');
+  const gltf = useLoader(GLTFLoader, '/assets/donutModell/scene.gltf');
   const modelRef = useRef();
 
   useFrame(({ clock }) => {
