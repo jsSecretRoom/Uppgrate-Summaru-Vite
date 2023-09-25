@@ -5,10 +5,10 @@ import { db2 } from '../../../FirestoreCardSDK';
 
 function CardLoader() {
   const [allCards, setAllCards] = useState([]);
+  const [loadingError, setLoadingError] = useState(null);
+  const batchSize = 8; // Размер пакета для загрузки
 
   useEffect(() => {
-    // Здесь вы можете выполнить запрос к серверу Firebase для получения данных о карточке
-    // Аналогично вашему существующему коду, но только один раз при монтировании компонента
     const fetchData = async () => {
       try {
         const allCollectionsRef = collection(db2, 'AllCollections');
@@ -26,7 +26,6 @@ function CardLoader() {
           collectionNames.push(collectionName);
         });
 
-        // Используйте Promise.all для асинхронного получения данных из всех коллекций
         const fetchPromises = collectionNames.map(async (cardName) => {
           const collectionRef = collection(db2, cardName);
           const querySnapshot = await getDocs(collectionRef);
@@ -37,23 +36,49 @@ function CardLoader() {
             cardsData.push(cardData);
           });
 
-          // Возвращаем массив данных из коллекции
           return cardsData;
         });
 
-        // Дождитесь завершения всех запросов и объедините данные из разных коллекций
         const allCardsData = await Promise.all(fetchPromises);
         const flattenedCardsData = allCardsData.flat();
-        setAllCards(flattenedCardsData);
-        
+
+        // Получите первую партию карточек (первые 8 карточек)
+        const initialBatch = flattenedCardsData.slice(0, batchSize);
+
+        setAllCards(initialBatch);
+
+        // Отправьте первую партию в компонент CardsProject
+        // (другой код вашего компонента CardsProject может потребоваться)
+        // <CardsProject allCards={initialBatch} />
+
+        // Загрузите оставшиеся карточки и обновите состояние allCards по мере получения новых данных
+        for (let i = batchSize; i < flattenedCardsData.length; i += batchSize) {
+          const nextBatch = flattenedCardsData.slice(i, i + batchSize);
+
+          // Обновите состояние allCards с новыми данными
+          setAllCards((prevCards) => [...prevCards, ...nextBatch]);
+
+          // Отправьте новую порцию данных в компонент CardsProject
+          // (другой код вашего компонента CardsProject может потребоваться)
+          // <CardsProject allCards={[...prevCards, ...nextBatch]} />
+        }
       } catch (error) {
         console.error('Ошибка при получении данных о карточке:', error);
+        setLoadingError(error);
       }
     };
 
     fetchData();
   }, []);
-  
+
+  if (loadingError) {
+    return <div>Ошибка при загрузке карточек. Попробуйте еще раз позже.</div>;
+  }
+
+  if (allCards.length === 0) {
+    return <div>Загрузка карточек...</div>;
+  }
+
   return (
     <>
       <CardsProject allCards={allCards} />
