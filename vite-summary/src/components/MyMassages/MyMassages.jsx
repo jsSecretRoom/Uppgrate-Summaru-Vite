@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import { db } from '../../../FirestoreSDK';
 
-import tresh from '../../assets/img/Trash.svg'
+import tresh from '../../assets/img/Trash.svg';
 
 async function fetchMessages() {
   const messagesCollection = collection(db, 'mymassages');
@@ -29,17 +29,20 @@ async function fetchMessages() {
 
 function MyMassages() {
   const [messages, setMessages] = useState([]);
-  
 
   useEffect(() => {
     fetchMessages().then((data) => {
+      // Извлечение и сортировка сообщений по дате
+      data.sort((a, b) => {
+        const dateA = extractDate(a.message);
+        const dateB = extractDate(b.message);
+        return dateA - dateB;
+      });
       setMessages(data);
     });
   }, []);
-  
 
-
-  const adminAuthorId = 'HfEvzwCbIAYi8qbm4LZPcaI0sBJ2'; 
+  const adminAuthorId = 'HfEvzwCbIAYi8qbm4LZPcaI0sBJ2';
 
   const handleDeleteMessage = async (messageId, createdByUserId) => {
     try {
@@ -65,17 +68,28 @@ function MyMassages() {
 
   useEffect(() => {
     Animations('.massage');
+  }, [messages]);
 
-  }, [messages]); 
+  // Функция для извлечения даты из сообщения с использованием регулярного выражения
+  const extractDate = (message) => {
+    const dateRegex = /(\d{2}\/\d{2}\/\d{4})/g;
+    const matches = message.match(dateRegex);
+    if (matches && matches.length > 0) {
+      const dateString = matches[0]; // Первая найденная дата в сообщении
+      const [day, month, year] = dateString.split('/').map(Number);
+      return new Date(year, month - 1, day); // Месяцы в JavaScript начинаются с 0
+    }
+    return null;
+  };
 
-  return ( 
+  return (
     <section className='my-massages' id='stories'>
       <ul className='massage-container'>
         {messages.map((message) => (
           <li className='massage' key={message.id}>
             {message.message}
             <button onClick={() => handleDeleteMessage(message.id, message.createdBy)}>
-              <img src={tresh} alt="tresh" />
+              <img src={tresh} alt='tresh' />
             </button>
           </li>
         ))}
