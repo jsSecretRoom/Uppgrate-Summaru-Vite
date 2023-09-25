@@ -2,9 +2,9 @@ import './MyselfComponent.scss'
 
 import MyFoto from '../../assets/my-foto.png'
 import Animations from '../Animations/Animations';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 function MyselfComponent() {
-    useEffect(() => {   
+    useEffect(() => {  
         Animations('.animation-block');
         Animations('.myself');
     });
