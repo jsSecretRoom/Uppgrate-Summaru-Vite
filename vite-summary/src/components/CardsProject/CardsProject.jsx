@@ -22,7 +22,7 @@ function CardsProject({ allCards }) {
   ];
 
   useEffect(() => {
-    if (allCards && allCards.length > 0) {
+    
       const interval = setInterval(() => {
         const project1Rect = project1Ref.current.getBoundingClientRect();
 
@@ -64,11 +64,11 @@ function CardsProject({ allCards }) {
       return () => {
         clearInterval(interval);
       };
-    }
+    
   }, [allCards]);
 
   useEffect(() => {
-    if (allCards && allCards.length > 0) {
+    
       // Обновите все карточки при монтировании компонента
       const newCards = Array.from({ length: 6 }, () => {
         const randomIndex = Math.floor(Math.random() * allCards.length);
@@ -81,7 +81,7 @@ function CardsProject({ allCards }) {
       setRandomCard4(newCards[3]);
       setRandomCard5(newCards[4]);
       setRandomCard6(newCards[5]);
-    }
+    
   }, [allCards]);
 
   return (

@@ -6,71 +6,75 @@ import { db2 } from '../../../FirestoreCardSDK';
 function CardLoader() {
   const [allCards, setAllCards] = useState([]);
   const [loadingError, setLoadingError] = useState(null);
-  const batchSize = 8; // Размер пакета для загрузки
-
-  const fetchData = async () => {
-    try {
-      const allCollectionsRef = collection(db2, 'AllCollections');
-      const querySnapshot = await getDocs(allCollectionsRef);
-
-      if (querySnapshot.empty) {
-        console.error('В коллекции "AllCollections" нет документов');
-        return;
-      }
-
-      const collectionNames = [];
-
-      querySnapshot.forEach((doc) => {
-        const collectionName = doc.data().collectionName;
-        collectionNames.push(collectionName);
-      });
-
-      const fetchPromises = collectionNames.map(async (cardName) => {
-        const collectionRef = collection(db2, cardName);
-        const querySnapshot = await getDocs(collectionRef);
-        const cardsData = [];
-
-        querySnapshot.forEach((doc) => {
-          const cardData = doc.data();
-          cardsData.push(cardData);
-        });
-
-        return cardsData;
-      });
-
-      const allCardsData = await Promise.all(fetchPromises);
-      const flattenedCardsData = allCardsData.flat();
-
-      // Получите первую партию карточек (первые 8 карточек)
-      const initialBatch = flattenedCardsData.slice(0, batchSize);
-
-      setAllCards(initialBatch);
-
-      // Отправьте первую партию в компонент CardsProject
-      // (другой код вашего компонента CardsProject может потребоваться)
-      // <CardsProject allCards={initialBatch} />
-
-      // Загрузите оставшиеся карточки и обновите состояние allCards по мере получения новых данных
-      for (let i = batchSize; i < flattenedCardsData.length; i += batchSize) {
-        const nextBatch = flattenedCardsData.slice(i, i + batchSize);
-
-        // Обновите состояние allCards с новыми данными
-        setAllCards((prevCards) => [...prevCards, ...nextBatch]);
-
-        // Отправьте новую порцию данных в компонент CardsProject
-        // (другой код вашего компонента CardsProject может потребоваться)
-        // <CardsProject allCards={[...prevCards, ...nextBatch]} />
-      }
-    } catch (error) {
-      console.error('Ошибка при получении данных о карточке:', error);
-      setLoadingError(error);
-      setTimeout(fetchData, 10000); // Повторный запрос через 10 секунд в случае ошибки
-    }
-  };
 
   useEffect(() => {
+    // Функция для получения данных из localStorage
+    const getCardsFromStorage = () => {
+      const storedCards = localStorage.getItem('allCards');
+      return storedCards ? JSON.parse(storedCards) : [];
+    };
+
+    const fetchData = async () => {
+      try {
+        // Получаем данные из localStorage при монтировании
+        const storedCards = getCardsFromStorage();
+        setAllCards(storedCards);
+
+        const allCollectionsRef = collection(db2, 'AllCollections');
+        const querySnapshot = await getDocs(allCollectionsRef);
+
+        if (querySnapshot.empty) {
+          console.error('В коллекции "AllCollections" нет документов');
+          return;
+        }
+
+        const collectionNames = [];
+
+        querySnapshot.forEach((doc) => {
+          const collectionName = doc.data().collectionName;
+          collectionNames.push(collectionName);
+        });
+
+        const fetchPromises = collectionNames.map(async (cardName) => {
+          const collectionRef = collection(db2, cardName);
+          const querySnapshot = await getDocs(collectionRef);
+          const cardsData = [];
+
+          querySnapshot.forEach((doc) => {
+            const cardData = doc.data();
+            cardsData.push(cardData);
+          });
+
+          return cardsData;
+        });
+
+        const allCardsData = await Promise.all(fetchPromises);
+        const flattenedCardsData = allCardsData.flat();
+
+        // Выбираем рандомные 10 карточек для отображения
+        const randomCards = getRandomCards(flattenedCardsData, 10);
+
+        // Обновляем данные в localStorage
+        localStorage.setItem('allCards', JSON.stringify(flattenedCardsData));
+
+        setAllCards(randomCards);
+      } catch (error) {
+        console.error('Ошибка при получении данных о карточке:', error);
+        setLoadingError(error);
+        
+        setTimeout(() => {
+          fetchData();
+        }, 10000); // Повторный запрос через 10 секунд в случае ошибки
+      }
+    };
+
     fetchData();
-  }, []); // Запустите запрос при монтировании компонента
+  }, []);
+
+  const getRandomCards = (cardsArray, count) => {
+    const shuffled = cardsArray.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+  };
 
   if (loadingError) {
     return <div>Ошибка при загрузке карточек. Попробуйте еще раз позже.</div>;
@@ -79,10 +83,9 @@ function CardLoader() {
   if (allCards.length === 0) {
     return <div>Загрузка карточек...</div>;
   }
-
+  
   return (
     <>
-      {/* Отправьте обновленное состояние allCards в компонент CardsProject */}
       <CardsProject allCards={allCards} />
     </>
   );

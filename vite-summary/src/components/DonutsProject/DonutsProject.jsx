@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useMemo } from 'react';
 import './DonutsProject.scss';
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
@@ -35,6 +35,9 @@ function DonutsProject() {
     }
   };
 
+  // Используйте useMemo для кеширования модели 3D
+  const cachedModel = useMemo(() => <Model />, []);
+
   return (
     <section className="project2" id="project2">
       <div className={`touch-window ${isLocked ? 'activ' : ''}`}></div>
@@ -53,7 +56,7 @@ function DonutsProject() {
         <Canvas>
           <ambientLight intensity={100} color={0x404040} />
           <pointLight position={[0, 0, 1]} intensity={10} decay={1} distance={100} color={0xff00ff} />
-          <Model />
+          {cachedModel}
           <OrbitControls ref={controlsRef} enableDamping enabled={!isLocked} />
         </Canvas>
       </div>

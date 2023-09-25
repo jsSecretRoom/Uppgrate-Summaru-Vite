@@ -17,9 +17,6 @@ function CardComponent({ randomCard }) {
     Animations('.card');
   });
 
-  if (!randomCard) {
-    return null; // Если randomCard равен null, не отображаем компонент
-  }
 
   return (
     <div className="card" style={{
