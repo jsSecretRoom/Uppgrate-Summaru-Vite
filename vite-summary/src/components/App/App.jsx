@@ -1,6 +1,6 @@
 import './App.scss'
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import ParticleAnimation from '../Animations/ParticleAnimation';
 
@@ -19,10 +19,24 @@ import MyMassages from '../MyMassages/MyMassages'
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isParticleAnimationEnabled, setIsParticleAnimationEnabled] = useState(
+    window.innerWidth >= 512
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsParticleAnimationEnabled(window.innerWidth >= 512);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <>
-      <ParticleAnimation/>
+      {isParticleAnimationEnabled && <ParticleAnimation />}
       <div className='layaut'>
         <NavComponent/>
         <main>
