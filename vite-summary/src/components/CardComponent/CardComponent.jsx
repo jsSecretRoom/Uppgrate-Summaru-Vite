@@ -14,10 +14,15 @@ function CardComponent({ randomCard }) {
   }
 
   useEffect(() => {
-    Animations('.card');
-  });
+    if (randomCard) {
+      Animations('.card');
+    }
+  }, [randomCard]);
 
-
+  if (!randomCard) {
+    return null;
+  }
+  
   return (
     <div className="card" style={{
       backgroundColor: randomCard ? (

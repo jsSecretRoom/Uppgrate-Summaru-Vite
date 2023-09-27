@@ -4,6 +4,9 @@ import CardComponent from '../CardComponent/CardComponent';
 import { useEffect, useState, useRef } from 'react';
 
 function CardsProject({ allCards }) {
+  
+  const [isAllCardsLoaded, setIsAllCardsLoaded] = useState(false);
+
   const [randomCard1, setRandomCard1] = useState(null);
   const [randomCard2, setRandomCard2] = useState(null);
   const [randomCard3, setRandomCard3] = useState(null);
@@ -83,6 +86,19 @@ function CardsProject({ allCards }) {
       setRandomCard6(newCards[5]);
     
   }, [allCards]);
+
+  useEffect(() => {
+    if (allCards && allCards.length > 0) {
+      // Если allCards доступны, установите флаг, что они загружены
+      setIsAllCardsLoaded(true);
+    }
+  }, [allCards]);
+
+  // Если allCards еще не загружены, отобразите загрузочный индикатор или ничего
+  if (!isAllCardsLoaded) {
+    // Здесь можно отобразить индикатор загрузки или другое сообщение о загрузке
+    return <div>Loading...</div>;
+  }
 
   return (
     <section className='project1' ref={project1Ref} id='project1'>

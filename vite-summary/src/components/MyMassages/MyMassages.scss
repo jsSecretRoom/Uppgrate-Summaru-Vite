@@ -16,10 +16,10 @@
             background-color: #2fa0d884;
             display: flex;
             
-            padding: 5px 20px;
+            padding: 0 20px;
             font-size: 16px;
             align-items: center;
-            height: 50px;
+            height: auto;
             column-gap: 10px;
 
             opacity: 0;
@@ -33,12 +33,13 @@
 
             @media (min-width: 660px){
                 font-size: 20px;
-                padding: 20px;
+                
             }
             button{
                 width: auto;
+                min-height: 55px;
                 height: auto;
-                border-radius: 15px;
+                border-radius: 10px;
                 background-color: rgba(222, 184, 135, 0);
                 &:hover{
                     background-color: rgba(213, 95, 95, 0.732);
