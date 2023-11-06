@@ -35,7 +35,7 @@ function DonutsProject() {
     }
   };
 
-  // Используйте useMemo для кеширования модели 3D
+
   const cachedModel = useMemo(() => <Model />, []);
 
   return (
@@ -49,7 +49,7 @@ function DonutsProject() {
           </button>
         </div>
   
-        <button>Visit page!</button>
+        <a href="https://donuts-site-vite-ts.vercel.app/login"><button>Visit page!</button></a>
       </div>
   
       <div className="donut-game-block">
